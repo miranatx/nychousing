@@ -6,8 +6,9 @@ Scrapes StreetEasy and LeaseBreak (filters encoded in the search URLs),
 detects new listings and price drops, and emails the batch.
 
 Flags:
-  --dry-run   Print what would alert; don't send email or write state.
-  --init      Populate state without sending alerts (use on first run or after a long gap).
+  --dry-run     Print what would alert; don't send email or write state.
+  --init        Populate state without sending alerts (use on first run or after a long gap).
+  --test-email  Send a test email and exit without scraping or writing state.
 """
 
 import argparse
@@ -34,8 +35,14 @@ def _scrape_all() -> list[dict]:
     return unique
 
 
-def run(dry_run: bool = False, init: bool = False) -> None:
+def run(dry_run: bool = False, init: bool = False, test_email: bool = False) -> None:
     print("=== NYC Housing Bot ===")
+    if test_email:
+        print("(test-email mode - sending SMTP smoke test only)")
+        alerts.send_test()
+        print("\nDone. Test email sent.")
+        return
+
     if dry_run:
         print("(dry run — no email will be sent, state will not be updated)")
     if init:
@@ -73,6 +80,8 @@ def run(dry_run: bool = False, init: bool = False) -> None:
         print("  skipping alerts (init mode)")
     elif events:
         alerts.send_batch(events)
+    else:
+        alerts.send_no_changes(len(listings))
 
     if dry_run:
         print("\nDone (dry run — state not saved).")
@@ -87,5 +96,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="NYC Housing Alert Bot")
     parser.add_argument("--dry-run", action="store_true", help="Don't send SMS or save state")
     parser.add_argument("--init", action="store_true", help="Populate state without alerting")
+    parser.add_argument("--test-email", action="store_true", help="Send a test email and exit")
     args = parser.parse_args()
-    run(dry_run=args.dry_run, init=args.init)
+    run(dry_run=args.dry_run, init=args.init, test_email=args.test_email)

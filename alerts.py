@@ -262,5 +262,40 @@ def send_batch(events: list[dict]) -> None:
     print(f"  [alert] email sent: {subject}")
 
 
+def send_no_changes(total_listings: int) -> None:
+    sent_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    subject = "[nyc housing] no changes"
+    body = (
+        "No new listings or price drops found.\n\n"
+        f"Listings checked: {total_listings}\n"
+        f"Sent at: {sent_at}\n"
+    )
+    html = f"""
+    <div style="font-family:{FONT};color:{TEXT};background:{BG};padding:32px;">
+      <div style="font-size:12px;letter-spacing:0.22em;font-weight:700;">[ nyc housing ]</div>
+      <h1 style="font-family:{SERIF};font-weight:400;font-size:40px;margin:28px 0 12px;">
+        no changes
+      </h1>
+      <p style="font-size:14px;line-height:1.7;margin:0 0 20px;">
+        No new listings or price drops found.
+      </p>
+      <div style="border-top:1px solid {TEXT};padding-top:16px;font-size:13px;line-height:1.8;">
+        <div><strong>listings checked</strong> {total_listings}</div>
+        <div><strong>sent at</strong> {escape(sent_at)}</div>
+      </div>
+    </div>
+    """
+    _send_email(subject, body, html)
+    print(f"  [alert] email sent: {subject}")
+
+
+def send_test() -> None:
+    sent_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    subject = "[nyc housing] test email"
+    body = f"NYC Housing email test sent at {sent_at}."
+    _send_email(subject, body, f"<pre>{escape(body)}</pre>")
+    print(f"  [alert] email sent: {subject}")
+
+
 def _send(subject: str, body: str) -> None:
     _send_email(subject, body, f"<pre>{escape(body)}</pre>")
