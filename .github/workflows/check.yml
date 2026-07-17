@@ -1,0 +1,59 @@
+name: Check NYC Housing
+
+on:
+  schedule:
+    # Times are UTC. The values below assume Eastern Daylight Time (EDT, UTC-4),
+    # in effect roughly mid-March → early November. Once DST ends, runs will fire
+    # 1 hour later in local time (2pm / 8pm). Bump both crons forward by 1 hour
+    # to compensate (18:00 / 00:00) if you want to stay locked to wall-clock 1pm/7pm.
+    - cron: '0 17 * * *'  # 13:00 EDT (1pm)
+    - cron: '0 23 * * *'  # 19:00 EDT (7pm)
+  workflow_dispatch:  # lets you trigger manually from the Actions tab
+
+permissions:
+  contents: write  # allow committing updated state.json back to the repo
+
+concurrency:
+  group: nyc-housing
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+
+      - name: Install dependencies
+        run: |
+          uv venv
+          uv pip install -r requirements.txt
+
+      - name: Run bot
+        env:
+          BROWSERBASE_API_KEY: ${{ secrets.BROWSERBASE_API_KEY }}
+          BROWSERBASE_PROJECT_ID: ${{ secrets.BROWSERBASE_PROJECT_ID }}
+          SMTP_HOST: smtp.gmail.com
+          SMTP_PORT: '587'
+          SMTP_USER: ${{ vars.SMTP_USER }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          EMAIL_FROM: ${{ vars.EMAIL_FROM }}
+          EMAIL_TO: ${{ vars.EMAIL_TO }}
+          STREETEASY_URL: ${{ vars.STREETEASY_URL }}
+          LEASEBREAK_URL: ${{ vars.LEASEBREAK_URL }}
+        run: uv run python run.py
+
+      - name: Commit state.json if changed
+        run: |
+          if [[ -n "$(git status --porcelain state.json)" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add state.json
+            git commit -m "Update state ($(date -u +%Y-%m-%dT%H:%MZ))"
+            git push
+          else
+            echo "No state changes."
+          fi
