@@ -2,8 +2,7 @@
 
 A small bot that watches [StreetEasy](https://streeteasy.com) and
 [LeaseBreak](https://www.leasebreak.com) for NYC rentals matching your search,
-and emails you new listings and price drops — grouped by bathroom count, in a
-clean editorial style.
+and emails you new listings and price drops.
 
 Your filters (price, beds, baths, neighborhoods) live entirely in the search
 URLs, so you build them in your browser and paste the full URL into `.env`.
