@@ -26,7 +26,7 @@ def browser_page():
     bb = Browserbase(api_key=config.BROWSERBASE_API_KEY)
     session = bb.sessions.create(
         project_id=config.BROWSERBASE_PROJECT_ID,
-        proxies=True,
+        proxies=config.BROWSERBASE_PROXIES,
         browser_settings={"solve_captchas": True, "block_ads": True},
     )
     with sync_playwright() as p:

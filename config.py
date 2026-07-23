@@ -11,8 +11,16 @@ def _require(key: str) -> str:
     return val
 
 
+def _bool_env(key: str, default: bool = False) -> bool:
+    val = os.getenv(key)
+    if val is None:
+        return default
+    return val.strip().lower() in {"1", "true", "yes", "on"}
+
+
 BROWSERBASE_API_KEY = _require("BROWSERBASE_API_KEY")
 BROWSERBASE_PROJECT_ID = _require("BROWSERBASE_PROJECT_ID")
+BROWSERBASE_PROXIES = _bool_env("BROWSERBASE_PROXIES", False)
 
 # SMTP creds — only required at send time; dry-run / init mode work without them.
 SMTP_HOST = os.getenv("SMTP_HOST", "smtp.gmail.com")

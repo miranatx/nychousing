@@ -9,6 +9,10 @@ URLs, so you build them in your browser and paste the full URL into `.env`.
 Scraping runs on [Browserbase](https://www.browserbase.com/) (a remote
 browser), so no local Chromium is needed.
 
+Browserbase proxies are disabled by default because they require a paid
+Browserbase plan. If your project has proxy access and you want to use it, set
+`BROWSERBASE_PROXIES=true`.
+
 ## Setup
 
 Uses [uv](https://docs.astral.sh/uv/).
