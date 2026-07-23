@@ -1,1 +1,30 @@
-{}
+{
+  "se_793-6-avenue-new_york_5n": {
+    "price": 5700,
+    "last_seen": 1784843615.0733612
+  },
+  "se_206-east-34-street-new_york_5c": {
+    "price": 5700,
+    "last_seen": 1784843615.0733612
+  },
+  "se_rivercourt-429-east-52nd-street-new_york_09b": {
+    "price": 5915,
+    "last_seen": 1784843615.0733612
+  },
+  "se_720-2-avenue-new_york_3": {
+    "price": 5300,
+    "last_seen": 1784843615.0733612
+  },
+  "se_manhattan-place_14e": {
+    "price": 5900,
+    "last_seen": 1784843615.0733612
+  },
+  "se_316-west-19-street-new_york_1e": {
+    "price": 5300,
+    "last_seen": 1784843615.0733612
+  },
+  "se_120-east-4-street-new_york_1a": {
+    "price": 5350,
+    "last_seen": 1784843615.0733612
+  }
+}
