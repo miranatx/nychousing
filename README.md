@@ -27,7 +27,7 @@ uv pip install -r requirements.txt
 ```bash
 uv run python run.py            # scrape, diff against state, email the batch
 uv run python run.py --dry-run  # print what would alert; send nothing
-uv run python run.py --init     # seed state without emailing (first run)
+uv run python run.py --init     # seed state without emailing
 ```
 
 State (which listings you've already seen, and their last price) is kept in

@@ -57,8 +57,7 @@ def run(dry_run: bool = False, init: bool = False, test_email: bool = False) -> 
     is_first_run = not current_state
 
     if is_first_run and not init:
-        print("  state is empty — treating as first run (auto-init, no alerts)")
-        init = True
+        print("  state is empty — first successful scrape will alert all listings")
 
     events = state.diff(listings, current_state)
     new_n = sum(1 for e in events if e["type"] == "new")
