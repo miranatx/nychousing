@@ -13,7 +13,7 @@
   },
   "se_720-2-avenue-new_york_3": {
     "price": 5300,
-    "last_seen": 1785110263.784231
+    "last_seen": 1785176695.9811068
   },
   "se_manhattan-place_14e": {
     "price": 5900,
@@ -21,7 +21,7 @@
   },
   "se_316-west-19-street-new_york_1e": {
     "price": 5300,
-    "last_seen": 1785110263.784231
+    "last_seen": 1785176695.9811068
   },
   "se_120-east-4-street-new_york_1a": {
     "price": 5350,
@@ -38,5 +38,9 @@
   "se_the-pecora-lic_633": {
     "price": 5375,
     "last_seen": 1785110263.784231
+  },
+  "se_2-20-malt-drive_608": {
+    "price": 6295,
+    "last_seen": 1785176695.9811068
   }
 }
