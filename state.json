@@ -13,7 +13,7 @@
   },
   "se_720-2-avenue-new_york_3": {
     "price": 5300,
-    "last_seen": 1785262507.308518
+    "last_seen": 1785282963.6911664
   },
   "se_manhattan-place_14e": {
     "price": 5900,
@@ -21,7 +21,7 @@
   },
   "se_316-west-19-street-new_york_1e": {
     "price": 5300,
-    "last_seen": 1785262507.308518
+    "last_seen": 1785282963.6911664
   },
   "se_120-east-4-street-new_york_1a": {
     "price": 5350,
@@ -45,6 +45,14 @@
   },
   "se_214-east-35-street-new_york_4a": {
     "price": 5999,
-    "last_seen": 1785262507.308518
+    "last_seen": 1785282963.6911664
+  },
+  "se_30-halletts-point-astoria_30703": {
+    "price": 5200,
+    "last_seen": 1785282963.6911664
+  },
+  "se_73-2-avenue-new_york_5": {
+    "price": 5250,
+    "last_seen": 1785282963.6911664
   }
 }
