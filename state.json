@@ -1,7 +1,7 @@
 {
   "se_793-6-avenue-new_york_5n": {
-    "price": 5700,
-    "last_seen": 1784851032.3049254
+    "price": 5795,
+    "last_seen": 1785435405.5221336
   },
   "se_206-east-34-street-new_york_5c": {
     "price": 5700,
@@ -13,7 +13,7 @@
   },
   "se_720-2-avenue-new_york_3": {
     "price": 5300,
-    "last_seen": 1785369471.10095
+    "last_seen": 1785435405.5221336
   },
   "se_manhattan-place_14e": {
     "price": 5900,
@@ -21,7 +21,7 @@
   },
   "se_316-west-19-street-new_york_1e": {
     "price": 5300,
-    "last_seen": 1785369471.10095
+    "last_seen": 1785435405.5221336
   },
   "se_120-east-4-street-new_york_1a": {
     "price": 5350,
@@ -33,7 +33,7 @@
   },
   "se_622-11-avenue_306": {
     "price": 7025,
-    "last_seen": 1785348508.479329
+    "last_seen": 1785435405.5221336
   },
   "se_the-pecora-lic_633": {
     "price": 5375,
@@ -57,6 +57,10 @@
   },
   "se_manhattan-place_9m": {
     "price": 6000,
-    "last_seen": 1785369471.10095
+    "last_seen": 1785435405.5221336
+  },
+  "se_7-west-20-street-new_york_5f": {
+    "price": 5500,
+    "last_seen": 1785435405.5221336
   }
 }
