@@ -236,7 +236,7 @@ def _send_message(subject: str, body: str) -> None:
     if not config.ALERT_PHONE_NUMBERS:
         raise RuntimeError("Cannot send alert: ALERT_PHONE_NUMBERS is not set in .env")
 
-    content = f"{subject}\n\n{body}"
+    content = f"{subject}\n\n{body}" if subject else body
     headers = {
         "Content-Type": "application/json",
         "SB-API-KEY-ID": config.SENDBLUE_API_KEY,
@@ -279,12 +279,38 @@ def _build_subject(events: list[dict]) -> str:
     return f"[nyc housing] {' / '.join(parts)}"
 
 
+def _event_message(event: dict) -> tuple[str, str]:
+    listing = event["listing"]
+    tag = "price drop" if event["type"] == "price_drop" else "new listing"
+    subject = f"[nyc housing] {tag}"
+    neighborhood = (
+        f"\n{listing['neighborhood']}" if listing.get("neighborhood") else ""
+    )
+    if event["type"] == "price_drop":
+        price = (
+            f"{_fmt_price(event['old_price'])} -> "
+            f"{_fmt_price(listing.get('price'))}/mo"
+        )
+    else:
+        price = f"{_fmt_price(listing.get('price'))}/mo"
+    body = (
+        f"{_location(listing)}{neighborhood}\n"
+        f"{price}  ·  {_beds_baths(listing)}  ·  {listing.get('source')}"
+    )
+    return subject, body
+
+
 def send_batch(events: list[dict]) -> None:
     if not events:
         return
-    subject = _build_subject(events)
-    _send_message(subject, _build_text(events))
-    print(f"  [alert] batch sent: {subject}")
+    for event in events:
+        subject, body = _event_message(event)
+        _send_message(subject, body)
+        url = event["listing"].get("url")
+        if url:
+            # A URL-only message gives iMessage the best chance to render a link preview.
+            _send_message("", url)
+    print(f"  [alert] sent {len(events)} listing alert(s)")
 
 
 def send_no_changes(total_listings: int) -> None:

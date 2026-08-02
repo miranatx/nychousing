@@ -44,3 +44,7 @@ commits the updated `state.json` back to the repo. It reads config from repo
 `LEASEBREAK_URL`) — set them under *Settings → Secrets and variables → Actions*.
 Set `ALERT_PHONE_NUMBERS` to comma-separated E.164 numbers, for example
 `+12125550001,+12125550002`; every alert is sent to both recipients.
+
+Each listing is delivered separately. Sendblue first sends the listing details,
+then sends the listing URL as its own message so iMessage can render a link
+preview when the listing site provides compatible preview metadata.
