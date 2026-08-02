@@ -69,6 +69,41 @@ class SendblueAlertsTest(unittest.TestCase):
 
         self.assertEqual(mocked_urlopen.call_count, 2)
 
+    @patch("alerts.urlopen", side_effect=[_Response()] * 4)
+    def test_sends_listing_details_then_url_only_to_both_numbers(self, mocked_urlopen):
+        event = {
+            "type": "new",
+            "listing": {
+                "address": "123 Example St #4A",
+                "neighborhood": "Chelsea",
+                "price": 5000,
+                "beds": 2,
+                "baths": 2,
+                "source": "leasebreak",
+                "url": "https://leasebreak.com/example-details/123/",
+            },
+        }
+
+        alerts.send_batch([event])
+
+        self.assertEqual(mocked_urlopen.call_count, 4)
+        payloads = [
+            json.loads(call.args[0].data)
+            for call in mocked_urlopen.call_args_list
+        ]
+        self.assertEqual(
+            [payload["number"] for payload in payloads],
+            ["+12125550001", "+12125550002", "+12125550001", "+12125550002"],
+        )
+        self.assertTrue(all("123 Example St" in payload["content"] for payload in payloads[:2]))
+        self.assertEqual(
+            [payload["content"] for payload in payloads[2:]],
+            [
+                "https://leasebreak.com/example-details/123/",
+                "https://leasebreak.com/example-details/123/",
+            ],
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
