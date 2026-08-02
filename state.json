@@ -74,5 +74,121 @@
   "se_225-east-7th-street-new_york_6a": {
     "price": 5895,
     "last_seen": 1785628491.9375417
+  },
+  "se_copper-lofts_752": {
+    "price": 6650,
+    "last_seen": 1785710970.0243394
+  },
+  "se_casa-dumbo_1y": {
+    "price": 5995,
+    "last_seen": 1785710970.0243394
+  },
+  "se_the-lightwell-dumbo_4512": {
+    "price": 7140,
+    "last_seen": 1785710970.0243394
+  },
+  "se_the-lightwell-dumbo_3414": {
+    "price": 7050,
+    "last_seen": 1785710970.0243394
+  },
+  "se_atlanticbk-1057-atlantic-avenue-brooklyn_ph16": {
+    "price": 6175,
+    "last_seen": 1785710970.0243394
+  },
+  "se_the-lightwell-dumbo_1530": {
+    "price": 6790,
+    "last_seen": 1785710970.0243394
+  },
+  "se_the-lightwell-dumbo_1511": {
+    "price": 7025,
+    "last_seen": 1785710970.0243394
+  },
+  "se_the-lightwell-dumbo_4713": {
+    "price": 7100,
+    "last_seen": 1785710970.0243394
+  },
+  "se_88-fulton_216": {
+    "price": 5600,
+    "last_seen": 1785710970.0243394
+  },
+  "se_the-lightwell-dumbo_1618": {
+    "price": 6850,
+    "last_seen": 1785710970.0243394
+  },
+  "se_the-lightwell-dumbo_6233": {
+    "price": 7315,
+    "last_seen": 1785710970.0243394
+  },
+  "se_130-1-avenue-new_york_4r": {
+    "price": 6300,
+    "last_seen": 1785710970.0243394
+  },
+  "se_the-lightwell-dumbo_3313": {
+    "price": 7085,
+    "last_seen": 1785710970.0243394
+  },
+  "se_416-lorimer-street-brooklyn_2b": {
+    "price": 5454,
+    "last_seen": 1785710970.0243394
+  },
+  "se_181-front-street_4p": {
+    "price": 7250,
+    "last_seen": 1785710970.0243394
+  },
+  "se_230-bushwick-avenue-brooklyn_2r": {
+    "price": 4500,
+    "last_seen": 1785710970.0243394
+  },
+  "se_the-lightwell-dumbo_3430": {
+    "price": 6765,
+    "last_seen": 1785710970.0243394
+  },
+  "se_236-west-15-street-new_york_31": {
+    "price": 6350,
+    "last_seen": 1785710970.0243394
+  },
+  "se_the-lightwell-dumbo_3726": {
+    "price": 6850,
+    "last_seen": 1785710970.0243394
+  },
+  "se_the-lightwell-dumbo_1411": {
+    "price": 7000,
+    "last_seen": 1785710970.0243394
+  },
+  "se_222-johnson-avenue-williamsburg_6s": {
+    "price": 5300,
+    "last_seen": 1785710970.0243394
+  },
+  "se_the-lightwell-dumbo_8324": {
+    "price": 6970,
+    "last_seen": 1785710970.0243394
+  },
+  "se_159-havemeyer-street-brooklyn_3": {
+    "price": 6200,
+    "last_seen": 1785710970.0243394
+  },
+  "se_414-lorimer-street_2a": {
+    "price": 5454,
+    "last_seen": 1785710970.0243394
+  },
+  "se_949-metropolitan-avenue-brooklyn_3l": {
+    "price": 4995,
+    "last_seen": 1785710970.0243394
+  },
+  "se_99-varet-street-brooklyn_2l": {
+    "price": 4500,
+    "last_seen": 1785710970.0243394
+  },
+  "lb_401289": {
+    "price": 5895,
+    "last_seen": 1785710970.0243394
+  },
+  "lb_401180": {
+    "price": 5679,
+    "last_seen": 1785710970.0243394
+  },
+  "lb_400660": {
+    "price": 4900,
+    "last_seen": 1785710970.0243394
   }
 }
