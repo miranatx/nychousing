@@ -22,13 +22,15 @@ BROWSERBASE_API_KEY = _require("BROWSERBASE_API_KEY")
 BROWSERBASE_PROJECT_ID = _require("BROWSERBASE_PROJECT_ID")
 BROWSERBASE_PROXIES = _bool_env("BROWSERBASE_PROXIES", False)
 
-# SMTP creds — only required at send time; dry-run / init mode work without them.
-SMTP_HOST = os.getenv("SMTP_HOST", "smtp.gmail.com")
-SMTP_PORT = int(os.getenv("SMTP_PORT", "587"))
-SMTP_USER = os.getenv("SMTP_USER")
-SMTP_PASSWORD = os.getenv("SMTP_PASSWORD")
-EMAIL_FROM = os.getenv("EMAIL_FROM") or os.getenv("SMTP_USER")
-EMAIL_TO = os.getenv("EMAIL_TO")
+# Sendblue creds — only required at send time; dry-run / init mode work without them.
+SENDBLUE_API_KEY = os.getenv("SENDBLUE_API_KEY")
+SENDBLUE_API_SECRET = os.getenv("SENDBLUE_API_SECRET")
+SENDBLUE_FROM_NUMBER = os.getenv("SENDBLUE_FROM_NUMBER")
+ALERT_PHONE_NUMBERS = [
+    number.strip()
+    for number in os.getenv("ALERT_PHONE_NUMBERS", "").split(",")
+    if number.strip()
+]
 
 # Search URLs encode all filtering (price, beds, baths, neighborhoods).
 STREETEASY_URL = os.getenv("STREETEASY_URL", "").strip()

@@ -3,12 +3,12 @@
 NYC Housing Alert Bot
 
 Scrapes StreetEasy and LeaseBreak (filters encoded in the search URLs),
-detects new listings and price drops, and emails the batch.
+detects new listings and price drops, and texts the batch through Sendblue.
 
 Flags:
-  --dry-run     Print what would alert; don't send email or write state.
+  --dry-run     Print what would alert; don't send messages or write state.
   --init        Populate state without sending alerts (use on first run or after a long gap).
-  --test-email  Send a test email and exit without scraping or writing state.
+  --test-alert  Send a test message and exit without scraping or writing state.
 """
 
 import argparse
@@ -38,13 +38,13 @@ def _scrape_all() -> list[dict]:
 def run(dry_run: bool = False, init: bool = False, test_email: bool = False) -> None:
     print("=== NYC Housing Bot ===")
     if test_email:
-        print("(test-email mode - sending SMTP smoke test only)")
+        print("(test-alert mode - sending Sendblue smoke test only)")
         alerts.send_test()
-        print("\nDone. Test email sent.")
+        print("\nDone. Test alert sent.")
         return
 
     if dry_run:
-        print("(dry run — no email will be sent, state will not be updated)")
+        print("(dry run — no message will be sent, state will not be updated)")
     if init:
         print("(init mode — populating state without alerting)")
 
@@ -95,6 +95,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="NYC Housing Alert Bot")
     parser.add_argument("--dry-run", action="store_true", help="Don't send SMS or save state")
     parser.add_argument("--init", action="store_true", help="Populate state without alerting")
-    parser.add_argument("--test-email", action="store_true", help="Send a test email and exit")
+    parser.add_argument(
+        "--test-alert", "--test-email", dest="test_email", action="store_true",
+        help="Send a test Sendblue message and exit",
+    )
     args = parser.parse_args()
     run(dry_run=args.dry_run, init=args.init, test_email=args.test_email)

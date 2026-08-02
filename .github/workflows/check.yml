@@ -36,12 +36,10 @@ jobs:
         env:
           BROWSERBASE_API_KEY: ${{ secrets.BROWSERBASE_API_KEY }}
           BROWSERBASE_PROJECT_ID: ${{ secrets.BROWSERBASE_PROJECT_ID }}
-          SMTP_HOST: smtp.gmail.com
-          SMTP_PORT: '587'
-          SMTP_USER: ${{ vars.SMTP_USER }}
-          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
-          EMAIL_FROM: ${{ vars.EMAIL_FROM }}
-          EMAIL_TO: ${{ vars.EMAIL_TO }}
+          SENDBLUE_API_KEY: ${{ secrets.SENDBLUE_API_KEY }}
+          SENDBLUE_API_SECRET: ${{ secrets.SENDBLUE_API_SECRET }}
+          SENDBLUE_FROM_NUMBER: ${{ vars.SENDBLUE_FROM_NUMBER }}
+          ALERT_PHONE_NUMBERS: ${{ vars.ALERT_PHONE_NUMBERS }}
           STREETEASY_URL: ${{ vars.STREETEASY_URL }}
           LEASEBREAK_URL: ${{ vars.LEASEBREAK_URL }}
         run: uv run python run.py

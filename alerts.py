@@ -1,7 +1,8 @@
-import smtplib
+import json
 from datetime import datetime
-from email.message import EmailMessage
 from html import escape
+from urllib.error import HTTPError, URLError
+from urllib.request import Request, urlopen
 
 import config
 
@@ -225,22 +226,46 @@ def _build_html(events: list[dict]) -> str:
 
 # --- send ---
 
-def _send_email(subject: str, text_body: str, html_body: str) -> None:
-    for key in ("SMTP_HOST", "SMTP_USER", "SMTP_PASSWORD", "EMAIL_FROM", "EMAIL_TO"):
+SENDBLUE_SEND_URL = "https://api.sendblue.co/api/send-message"
+
+
+def _send_message(subject: str, body: str) -> None:
+    for key in ("SENDBLUE_API_KEY", "SENDBLUE_API_SECRET", "SENDBLUE_FROM_NUMBER"):
         if not getattr(config, key):
-            raise RuntimeError(f"Cannot send email: {key} is not set in .env")
+            raise RuntimeError(f"Cannot send alert: {key} is not set in .env")
+    if not config.ALERT_PHONE_NUMBERS:
+        raise RuntimeError("Cannot send alert: ALERT_PHONE_NUMBERS is not set in .env")
 
-    msg = EmailMessage()
-    msg["Subject"] = subject
-    msg["From"] = config.EMAIL_FROM
-    msg["To"] = config.EMAIL_TO
-    msg.set_content(text_body)
-    msg.add_alternative(html_body, subtype="html")
-
-    with smtplib.SMTP(config.SMTP_HOST, config.SMTP_PORT) as s:
-        s.starttls()
-        s.login(config.SMTP_USER, config.SMTP_PASSWORD)
-        s.send_message(msg)
+    content = f"{subject}\n\n{body}"
+    headers = {
+        "Content-Type": "application/json",
+        "SB-API-KEY-ID": config.SENDBLUE_API_KEY,
+        "SB-API-SECRET-KEY": config.SENDBLUE_API_SECRET,
+    }
+    failures = []
+    for number in config.ALERT_PHONE_NUMBERS:
+        payload = json.dumps({
+            "from_number": config.SENDBLUE_FROM_NUMBER,
+            "number": number,
+            "content": content,
+        }).encode("utf-8")
+        request = Request(SENDBLUE_SEND_URL, data=payload, headers=headers, method="POST")
+        try:
+            with urlopen(request, timeout=30) as response:
+                if response.status < 200 or response.status >= 300:
+                    raise RuntimeError(
+                        f"Sendblue returned HTTP {response.status} for {number}"
+                    )
+        except HTTPError as exc:
+            detail = exc.read().decode("utf-8", errors="replace")
+            failures.append(f"{number}: HTTP {exc.code}: {detail}")
+            continue
+        except URLError as exc:
+            failures.append(f"{number}: {exc.reason}")
+            continue
+        print(f"  [alert] message sent to {number}")
+    if failures:
+        raise RuntimeError("Sendblue failed for " + "; ".join(failures))
 
 
 def _build_subject(events: list[dict]) -> str:
@@ -258,8 +283,8 @@ def send_batch(events: list[dict]) -> None:
     if not events:
         return
     subject = _build_subject(events)
-    _send_email(subject, _build_text(events), _build_html(events))
-    print(f"  [alert] email sent: {subject}")
+    _send_message(subject, _build_text(events))
+    print(f"  [alert] batch sent: {subject}")
 
 
 def send_no_changes(total_listings: int) -> None:
@@ -270,32 +295,17 @@ def send_no_changes(total_listings: int) -> None:
         f"Listings checked: {total_listings}\n"
         f"Sent at: {sent_at}\n"
     )
-    html = f"""
-    <div style="font-family:{FONT};color:{TEXT};background:{BG};padding:32px;">
-      <div style="font-size:12px;letter-spacing:0.22em;font-weight:700;">[ nyc housing ]</div>
-      <h1 style="font-family:{SERIF};font-weight:400;font-size:40px;margin:28px 0 12px;">
-        no changes
-      </h1>
-      <p style="font-size:14px;line-height:1.7;margin:0 0 20px;">
-        No new listings or price drops found.
-      </p>
-      <div style="border-top:1px solid {TEXT};padding-top:16px;font-size:13px;line-height:1.8;">
-        <div><strong>listings checked</strong> {total_listings}</div>
-        <div><strong>sent at</strong> {escape(sent_at)}</div>
-      </div>
-    </div>
-    """
-    _send_email(subject, body, html)
-    print(f"  [alert] email sent: {subject}")
+    _send_message(subject, body)
+    print(f"  [alert] status sent: {subject}")
 
 
 def send_test() -> None:
     sent_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    subject = "[nyc housing] test email"
-    body = f"NYC Housing email test sent at {sent_at}."
-    _send_email(subject, body, f"<pre>{escape(body)}</pre>")
-    print(f"  [alert] email sent: {subject}")
+    subject = "[nyc housing] test alert"
+    body = f"NYC Housing Sendblue test sent at {sent_at}."
+    _send_message(subject, body)
+    print(f"  [alert] test sent: {subject}")
 
 
 def _send(subject: str, body: str) -> None:
-    _send_email(subject, body, f"<pre>{escape(body)}</pre>")
+    _send_message(subject, body)
