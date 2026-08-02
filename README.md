@@ -2,7 +2,8 @@
 
 A small bot that watches [StreetEasy](https://streeteasy.com) and
 [LeaseBreak](https://www.leasebreak.com) for NYC rentals matching your search,
-and emails you new listings and price drops.
+and texts new listings and price drops to your chosen phone numbers through
+[Sendblue](https://sendblue.com/).
 
 Your filters (price, beds, baths, neighborhoods) live entirely in the search
 URLs, so you build them in your browser and paste the full URL into `.env`.
@@ -18,16 +19,16 @@ Browserbase plan. If your project has proxy access and you want to use it, set
 Uses [uv](https://docs.astral.sh/uv/).
 
 ```bash
-cp .env.example .env          # fill in Browserbase + SMTP creds and search URLs
+cp .env.example .env          # fill in Browserbase + Sendblue creds and search URLs
 uv pip install -r requirements.txt
 ```
 
 ## Usage
 
 ```bash
-uv run python run.py            # scrape, diff against state, email the batch
+uv run python run.py            # scrape, diff against state, text the batch
 uv run python run.py --dry-run  # print what would alert; send nothing
-uv run python run.py --init     # seed state without emailing
+uv run python run.py --init     # seed state without sending alerts
 ```
 
 State (which listings you've already seen, and their last price) is kept in
@@ -37,6 +38,9 @@ State (which listings you've already seen, and their last price) is kept in
 
 `.github/workflows/check.yml` runs the bot twice a day on GitHub Actions and
 commits the updated `state.json` back to the repo. It reads config from repo
-**Secrets** (`BROWSERBASE_API_KEY`, `BROWSERBASE_PROJECT_ID`, `SMTP_PASSWORD`)
-and **Variables** (`SMTP_USER`, `EMAIL_FROM`, `EMAIL_TO`, `STREETEASY_URL`,
+**Secrets** (`BROWSERBASE_API_KEY`, `BROWSERBASE_PROJECT_ID`,
+`SENDBLUE_API_KEY`, `SENDBLUE_API_SECRET`) and **Variables**
+(`SENDBLUE_FROM_NUMBER`, `ALERT_PHONE_NUMBERS`, `STREETEASY_URL`,
 `LEASEBREAK_URL`) — set them under *Settings → Secrets and variables → Actions*.
+Set `ALERT_PHONE_NUMBERS` to comma-separated E.164 numbers, for example
+`+12125550001,+12125550002`; every alert is sent to both recipients.
