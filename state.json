@@ -77,7 +77,7 @@
   },
   "se_copper-lofts_752": {
     "price": 6650,
-    "last_seen": 1785888018.7980452
+    "last_seen": 1785954174.5652921
   },
   "se_casa-dumbo_1y": {
     "price": 5995,
@@ -93,7 +93,7 @@
   },
   "se_atlanticbk-1057-atlantic-avenue-brooklyn_ph16": {
     "price": 6175,
-    "last_seen": 1785888018.7980452
+    "last_seen": 1785954174.5652921
   },
   "se_the-lightwell-dumbo_1530": {
     "price": 6790,
@@ -105,15 +105,15 @@
   },
   "se_the-lightwell-dumbo_4713": {
     "price": 7100,
-    "last_seen": 1785888018.7980452
+    "last_seen": 1785954174.5652921
   },
   "se_88-fulton_216": {
     "price": 5600,
-    "last_seen": 1785888018.7980452
+    "last_seen": 1785954174.5652921
   },
   "se_the-lightwell-dumbo_1618": {
     "price": 6850,
-    "last_seen": 1785888018.7980452
+    "last_seen": 1785954174.5652921
   },
   "se_the-lightwell-dumbo_6233": {
     "price": 7315,
@@ -125,19 +125,19 @@
   },
   "se_the-lightwell-dumbo_3313": {
     "price": 7085,
-    "last_seen": 1785888018.7980452
+    "last_seen": 1785954174.5652921
   },
   "se_416-lorimer-street-brooklyn_2b": {
     "price": 5454,
-    "last_seen": 1785868092.6699793
+    "last_seen": 1785954174.5652921
   },
   "se_181-front-street_4p": {
     "price": 7250,
-    "last_seen": 1785888018.7980452
+    "last_seen": 1785954174.5652921
   },
   "se_230-bushwick-avenue-brooklyn_2r": {
     "price": 4500,
-    "last_seen": 1785888018.7980452
+    "last_seen": 1785954174.5652921
   },
   "se_the-lightwell-dumbo_3430": {
     "price": 6765,
@@ -145,7 +145,7 @@
   },
   "se_236-west-15-street-new_york_31": {
     "price": 6350,
-    "last_seen": 1785888018.7980452
+    "last_seen": 1785954174.5652921
   },
   "se_the-lightwell-dumbo_3726": {
     "price": 6850,
@@ -153,11 +153,11 @@
   },
   "se_the-lightwell-dumbo_1411": {
     "price": 7000,
-    "last_seen": 1785888018.7980452
+    "last_seen": 1785954174.5652921
   },
   "se_222-johnson-avenue-williamsburg_6s": {
     "price": 5300,
-    "last_seen": 1785888018.7980452
+    "last_seen": 1785954174.5652921
   },
   "se_the-lightwell-dumbo_8324": {
     "price": 6970,
@@ -169,7 +169,7 @@
   },
   "se_414-lorimer-street_2a": {
     "price": 5454,
-    "last_seen": 1785888018.7980452
+    "last_seen": 1785954174.5652921
   },
   "se_949-metropolitan-avenue-brooklyn_3l": {
     "price": 4995,
@@ -177,7 +177,7 @@
   },
   "se_99-varet-street-brooklyn_2l": {
     "price": 4500,
-    "last_seen": 1785868092.6699793
+    "last_seen": 1785954174.5652921
   },
   "lb_401180": {
     "price": 5679,
@@ -185,7 +185,7 @@
   },
   "lb_400660": {
     "price": 4900,
-    "last_seen": 1785888018.7980452
+    "last_seen": 1785954174.5652921
   },
   "se_the-welz_17c": {
     "price": 5995,
@@ -193,15 +193,15 @@
   },
   "se_88-fulton_127": {
     "price": 5750,
-    "last_seen": 1785888018.7980452
+    "last_seen": 1785954174.5652921
   },
   "se_169-johnson-avenue--brooklyn_604a": {
     "price": 5499,
-    "last_seen": 1785888018.7980452
+    "last_seen": 1785954174.5652921
   },
   "lb_401289": {
     "price": 5895,
-    "last_seen": 1785888018.7980452
+    "last_seen": 1785954174.5652921
   },
   "se_754-east-6-street-new_york_4a": {
     "price": 6300,
@@ -213,22 +213,30 @@
   },
   "se_twenty-exchange_824-20x": {
     "price": 6285,
-    "last_seen": 1785888018.7980452
+    "last_seen": 1785954174.5652921
   },
   "se_the-lightwell-dumbo_4430": {
     "price": 6200,
-    "last_seen": 1785888018.7980452
+    "last_seen": 1785954174.5652921
   },
   "se_the-lightwell-dumbo_7233": {
     "price": 6400,
-    "last_seen": 1785888018.7980452
+    "last_seen": 1785954174.5652921
   },
   "se_279-south-5-street-brooklyn_1f": {
     "price": 5500,
-    "last_seen": 1785888018.7980452
+    "last_seen": 1785954174.5652921
   },
   "se_949-metropolitan-avenue-brooklyn_4a": {
     "price": 4995,
-    "last_seen": 1785888018.7980452
+    "last_seen": 1785954174.5652921
+  },
+  "se_the-welz_17b": {
+    "price": 6050,
+    "last_seen": 1785954174.5652921
+  },
+  "se_waterside-plaza_1007a": {
+    "price": 6395,
+    "last_seen": 1785954174.5652921
   }
 }
