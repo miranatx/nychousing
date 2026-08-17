@@ -93,7 +93,7 @@
   },
   "se_atlanticbk-1057-atlantic-avenue-brooklyn_ph16": {
     "price": 6175,
-    "last_seen": 1785954174.5652921
+    "last_seen": 1786987707.6806617
   },
   "se_the-lightwell-dumbo_1530": {
     "price": 6790,
@@ -104,12 +104,12 @@
     "last_seen": 1785714962.4426775
   },
   "se_the-lightwell-dumbo_4713": {
-    "price": 7100,
-    "last_seen": 1785954174.5652921
+    "price": 6200,
+    "last_seen": 1786987707.6806617
   },
   "se_88-fulton_216": {
     "price": 5600,
-    "last_seen": 1785954174.5652921
+    "last_seen": 1786987707.6806617
   },
   "se_the-lightwell-dumbo_1618": {
     "price": 6850,
@@ -184,12 +184,12 @@
     "last_seen": 1785783115.4241085
   },
   "lb_400660": {
-    "price": 4900,
-    "last_seen": 1785954174.5652921
+    "price": 4620,
+    "last_seen": 1786987707.6806617
   },
   "se_the-welz_17c": {
-    "price": 5995,
-    "last_seen": 1785888018.7980452
+    "price": 5895,
+    "last_seen": 1786987707.6806617
   },
   "se_88-fulton_127": {
     "price": 5750,
@@ -201,7 +201,7 @@
   },
   "lb_401289": {
     "price": 5895,
-    "last_seen": 1785954174.5652921
+    "last_seen": 1786987707.6806617
   },
   "se_754-east-6-street-new_york_4a": {
     "price": 6300,
@@ -238,5 +238,45 @@
   "se_waterside-plaza_1007a": {
     "price": 6395,
     "last_seen": 1785954174.5652921
+  },
+  "se_copper-lofts_770": {
+    "price": 5850,
+    "last_seen": 1786987707.6806617
+  },
+  "se_the-lightwell-dumbo_3123": {
+    "price": 7085,
+    "last_seen": 1786987707.6806617
+  },
+  "se_the-lightwell-dumbo_414": {
+    "price": 6463,
+    "last_seen": 1786987707.6806617
+  },
+  "se_the-lightwell-dumbo_4112": {
+    "price": 6150,
+    "last_seen": 1786987707.6806617
+  },
+  "se_twenty-exchange_248": {
+    "price": 6415,
+    "last_seen": 1786987707.6806617
+  },
+  "se_the-lightwell-dumbo_733": {
+    "price": 5919,
+    "last_seen": 1786987707.6806617
+  },
+  "se_the-lightwell-dumbo_512": {
+    "price": 6248,
+    "last_seen": 1786987707.6806617
+  },
+  "se_the-lightwell-dumbo_726": {
+    "price": 6136,
+    "last_seen": 1786987707.6806617
+  },
+  "se_416-lorimer-street-brooklyn_2d": {
+    "price": 5450,
+    "last_seen": 1786987707.6806617
+  },
+  "se_pearl-pine_917": {
+    "price": 6350,
+    "last_seen": 1786987707.6806617
   }
 }
